@@ -5,9 +5,13 @@ import { useSelector, useDispatch } from "react-redux";
 // 2. Importamos las acciones
 import { getAllPokemons, getAllModels } from "../../redux/actions";
 import Header from "../../components/header/Header";
-import Hero from "../../components/hero/Hero";
 import ModelHero from "../../components/modelHero/ModelHero";
-import ImageMS from "../../assets/images/Homepage-Model-S-Desktop-v2.avif";
+import ImageMs from "../../assets/images/Homepage-Model-S-Desktop-v2.avif";
+import ImageM3 from "../../assets/images/New-Model-3-Performance-Main-Hero-Desktop-LHD.avif";
+import ImageMx from "../../assets/images/Model-X-Main-Hero-Desktop.avif";
+import ImageMy from "../../assets/images/New-Model-Y-Main-Hero-Desktop-LHD.avif";
+
+import HomeHero from "../../components/homeHero/HomeHero";
 
 const Home = () => {
   // 3. Creamos las constantes para usar los hooks
@@ -37,28 +41,35 @@ const Home = () => {
 
       <div className="snap-y snap-mandatory relative w-full h-screen overflow-x-hidden scroll-smooth">
         <div className="snap-start">
-          <Hero />
+          <HomeHero />
         </div>
         <div className="snap-start">
           <ModelHero
             modelName={"Model S"}
-            modelImage={ImageMS}
             isTextWhite={true}
+            sourceElement={ImageMs}
           />
         </div>
         <div className="snap-start">
           <ModelHero
-            modelName={"Model S"}
-            modelImage={ImageMS}
+            modelName={"Model 3"}
             isTextWhite={false}
+            sourceElement={ImageM3}
           />
         </div>
-        
         <div className="snap-start">
-          <Hero />
+          <ModelHero
+            modelName={"Model X"}
+            isTextWhite={false}
+            sourceElement={ImageMx}
+          />
         </div>
         <div className="snap-start">
-          <Hero />
+          <ModelHero
+            modelName={"Model Y"}
+            isTextWhite={false}
+            sourceElement={ImageMy}
+          />
         </div>
       </div>
     </div>

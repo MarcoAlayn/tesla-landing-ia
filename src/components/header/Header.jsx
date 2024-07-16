@@ -93,22 +93,22 @@ const Header = () => {
       id="landing-header"
       className="py-3 px-10 flex items-center fixed top-0 w-full justify-between z-40 text-white"
     >
-      <div className="flex flex-grow basis-0">
+      <a href="/" className="flex flex-grow basis-0">
         <Logo />
-      </div>
+      </a>
       <nav>
         <ul className="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-300 [&>li>a]:text-current [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2">
           <li>
-            <a href="#">Model S</a>
+            <a href="/models">Model S</a>
           </li>
           <li>
-            <a href="#">Model 3</a>
+            <a href="/model3">Model 3</a>
           </li>
           <li>
-            <a href="#">Model X</a>
+            <a href="/modelx">Model X</a>
           </li>
           <li>
-            <a href="#">Model Y</a>
+            <a href="/modely">Model Y</a>
           </li>
           <li>
             <a href="#">Powerwall</a>

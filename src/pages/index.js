@@ -1,4 +1,7 @@
 import Home from "./home/Home";
-import ModelS from "./model_s/ModelS";
+import ModelSPage from "./models/ModelSPage"
+import Model3Page from "./models/Model3Page";
+import ModelXPage from "./models/ModelXPage";
+import ModelYPage from "./models/ModelYPage";
 
-export { Home, ModelS };
+export { Home, ModelSPage, Model3Page, ModelXPage, ModelYPage };
