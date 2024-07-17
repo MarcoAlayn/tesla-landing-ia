@@ -6,10 +6,12 @@ import paintWhite from "../../assets/images/Paint_White.avif";
 import paintBlue from "../../assets/images/Paint_Blue.avif";
 import paintBlack from "../../assets/images/Paint_Black.avif";
 import paintRed from "../../assets/images/Paint_Red.avif";
+import paintLunar from "../../assets/images/Paint_LSilver.avif";
 
 // Importación de íconos de pintura interior
 import paintWhiteInterior from "../../assets/images/white_interior.avif";
 import paintBlackInterior from "../../assets/images/black_interior.avif";
+import paintCreamInterior from "../../assets/images/cream_interior.avif";
 
 function PaintingSide({ imagesList, exteriorColors, interiorColors }) {
   const [currentColor, setCurrentColor] = useState(exteriorColors[0].name);
@@ -48,11 +50,13 @@ function PaintingSide({ imagesList, exteriorColors, interiorColors }) {
     deep_Metallic_blue: paintBlue,
     solid_black: paintBlack,
     ultra_red: paintRed,
+    lunar_silver: paintLunar,
   };
 
   const interiorIcons = {
     black: paintBlackInterior,
     white: paintWhiteInterior,
+    cream: paintCreamInterior,
   };
 
   return (
