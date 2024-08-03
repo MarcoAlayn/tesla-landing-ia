@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 // Importación de íconos de pintura exterior
 import paintSgray from "../../assets/images/Paint_StealthGrey.avif";
@@ -66,26 +67,37 @@ function PaintingSide({ imagesList, exteriorColors, interiorColors }) {
     >
       <div className='relative h-full flex flex-col md:flex-row'>
         {/* Imagen */}
-        <div className='relative flex flex-col items-center justify-center md:h-full md:w-3/4 [&>button]:hover:hover:bg-gray-400/50 [&>button]:hover:text-white'>
+        <div className='relative flex flex-col items-center justify-center md:h-full md:w-3/4 '>
           <button
-            className='absolute top-1/2 transform -translate-y-1/2 left-4 rounded-md w-8 h-8 md:w-12 md:h-12 text-2xl bg-transparent text-transparent'
+            className='absolute top-1/2 transform -translate-y-1/2 left-4 rounded-md w-8 h-8 md:w-12 md:h-12 text-2xl 
+            bg-gray-400 text-white hover:bg-gray-400/50 transition-colors ease-out duration-500 disabled:pointer-events-none disabled:bg-gray-200'
             onClick={handlePreviousNumber}
+            disabled={currentImageNumber <= minImageNumber}
           >
             {"<"}
           </button>
           <div
-            className='flex items-center justify-center w-full '
+            className='relative flex items-center justify-center w-full h-full'
             style={{ maxWidth: "90%", maxHeight: "90%" }}
           >
-            <img
-              src={imagesList[currentColor][currentView][currentImageNumber]}
-              alt='Car view'
-              className='object-contain w-full h-full animate-fadeIn'
-            />
+            <AnimatePresence>
+              <motion.img
+                key={imagesList[currentColor][currentView][currentImageNumber]}
+                src={imagesList[currentColor][currentView][currentImageNumber]}
+                alt='Car view'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className='object-contain w-full h-full absolute'
+              />
+            </AnimatePresence>
           </div>
           <button
-            className='absolute top-1/2 transform -translate-y-1/2 right-4 rounded-md w-8 h-8 md:w-12 md:h-12 text-2xl bg-transparent text-transparent'
+            className='absolute top-1/2 transform -translate-y-1/2 right-4 rounded-md w-8 h-8 md:w-12 md:h-12 text-2xl
+            bg-gray-400 text-white hover:bg-gray-400/50 transition-colors ease-out duration-500 disabled:pointer-events-none disabled:bg-gray-200'
             onClick={handleNextNumber}
+            disabled={currentImageNumber >= maxImageNumber}
           >
             {">"}
           </button>
