@@ -90,37 +90,37 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      id="landing-header"
-      className="py-3 px-10 flex items-center fixed top-0 w-full justify-between z-40 text-white"
+      id='landing-header'
+      className='py-3 px-10 flex items-center fixed top-0 w-full justify-between z-40 text-white'
     >
-      <a href="/" className="flex flex-grow basis-0">
+      <a href='/' className='flex flex-grow basis-0'>
         <Logo />
       </a>
       <nav>
-        <ul className="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-300 [&>li>a]:text-current [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2">
+        <ul className='flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-300 [&>li>a]:text-current [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2'>
           <li>
-            <a href="/models">Model S</a>
+            <a href='/models'>Model S</a>
           </li>
           <li>
-            <a href="/model3">Model 3</a>
+            <a href='/model3'>Model 3</a>
           </li>
           <li>
-            <a href="/modelx">Model X</a>
+            <a href='/modelx'>Model X</a>
           </li>
           <li>
-            <a href="/modely">Model Y</a>
+            <a href='/modely'>Model Y</a>
           </li>
-          <li>
+          {/* <li>
             <a href="#">Powerwall</a>
           </li>
           <li>
             <a href="#">Carga</a>
-          </li>
+          </li> */}
         </ul>
       </nav>
-      <nav className="flex flex-grow basis-0 justify-end ">
-        <ul className="flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-300 [&>li>a]:text-current [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2">
-          <li>
+      <nav className='flex flex-grow basis-0 justify-end '>
+        <ul className='flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-300 [&>li>a]:text-current [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2'>
+          {/* <li>
             <a href="#">Soporte</a>
           </li>
           <li>
@@ -128,16 +128,16 @@ const Header = () => {
           </li>
           <li>
             <a href="#">Cuenta</a>
-          </li>
+          </li> */}
           <li>
-            <a href="#">Menú</a>
+            <a href='/choose'>Ayúdame a elegir</a>
           </li>
         </ul>
       </nav>
 
       <div
         ref={backdropRef}
-        id="menu-backdrop"
+        id='menu-backdrop'
         className={`
       absolute bg-black/30 backdrop-blur-sm rounded
       left-0 top-0

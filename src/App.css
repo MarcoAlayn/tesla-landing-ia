@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  height: auto;
+  /* aspect-ratio: 2; */
+  width: 100px;
+  border: 10px solid #42424242;
+  box-sizing: border-box;
+  background: 
+    radial-gradient(farthest-side,#fff 98%,#42424275) left/20px 20px,
+    radial-gradient(farthest-side,#fff 98%,#42424279) left/20px 20px,
+    radial-gradient(farthest-side,#fff 98%,#42424273) center/20px 20px,
+    radial-gradient(farthest-side,#fff 98%,#4242427e) right/20px 20px,
+    #424242a9;
+  background-repeat: no-repeat;
+  filter: blur(4px) contrast(10);
+  animation: l14 1s infinite;
+}
+@keyframes l14 {
+  100%  {background-position:right,left,center,right}
+}
+
+.blur-border {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  border: 10px solid red;
+  border-image: linear-gradient(to right, transparent, rgba(66, 66, 66, 0.5), transparent) 1;
+  box-shadow: 0 0 10px 10px rgba(66, 66, 66, 0.5);
+  pointer-events: none;
+}

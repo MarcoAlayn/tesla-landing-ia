@@ -16,7 +16,7 @@ const ElementBackground = ({ isVideo, sourceElement, modelName }) => {
         <img
           src={sourceElement}
           alt={modelName}
-          className="h-full w-full object-cover object-center"
+          className="h-screen w-full object-cover object-center"
         />
       )}
     </div>
