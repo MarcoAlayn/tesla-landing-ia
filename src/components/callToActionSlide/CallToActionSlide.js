@@ -159,7 +159,7 @@ const CallToActionSlide = ({ point, image }) => {
         <a
           href=''
           className='text-white border-2 border-white bg-white/5 backdrop-blur-sm text-sm rounded font-medium px-12 py-2 inline-block 
-                hover:bg-white hover:text-black transition-colors'
+                hover:bg-white hover:text-black transition-colors ease-out duration-300'
         >
           Agendar prueba de manejo
         </a>

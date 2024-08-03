@@ -9,6 +9,7 @@ import RecommendationBackground from "../../assets/images/dark_background.png";
 import IaIcon from "../../assets/images/ia_icon.png";
 import Alert from "../alert/Alert";
 import Loader from "../../components/loader/Loader";
+import { motion, AnimatePresence } from "framer-motion";
 
 const RecommendationSlide = ({ point, image, modelName, paint }) => {
   const [loading, setLoading] = useState(false);
@@ -64,7 +65,8 @@ const RecommendationSlide = ({ point, image, modelName, paint }) => {
   };
 
   return (
-    <div
+    <AnimatePresence>
+    <motion.div
       className={`snap-start flex items-center justify-center w-full h-screen flex-col relative`}
     >
       <Alert message={error} />
@@ -116,7 +118,10 @@ const RecommendationSlide = ({ point, image, modelName, paint }) => {
                 {/* si ya hay un audio que s muestre el reproductor */}
                 {audio ? (
                   <div>
-                    <button className='hover:opacity-50' onClick={handlePlay}>
+                    <button
+                      className='hover:opacity-50 transition-opacity ease-out duration-300'
+                      onClick={handlePlay}
+                    >
                       <img
                         width={"35px"}
                         height={"35px"}
@@ -125,7 +130,10 @@ const RecommendationSlide = ({ point, image, modelName, paint }) => {
                       />
                       {loading && <span>Loading...</span>}
                     </button>
-                    <button className='hover:opacity-50' onClick={handlePause}>
+                    <button
+                      className='hover:opacity-50 transition-opacity ease-out duration-300'
+                      onClick={handlePause}
+                    >
                       <img
                         width={"35px"}
                         height={"35px"}
@@ -133,7 +141,10 @@ const RecommendationSlide = ({ point, image, modelName, paint }) => {
                         alt='Pause Icon'
                       />
                     </button>
-                    <button className='hover:opacity-50' onClick={handleStop}>
+                    <button
+                      className='hover:opacity-50 transition-opacity ease-out duration-300'
+                      onClick={handleStop}
+                    >
                       <img
                         width={"35px"}
                         height={"35px"}
@@ -146,7 +157,7 @@ const RecommendationSlide = ({ point, image, modelName, paint }) => {
                   <Loader />
                 ) : (
                   <button
-                    className='hover:opacity-50'
+                    className='hover:opacity-50 transition-opacity ease-out duration-300'
                     onClick={handleButtonClick}
                     disabled={loading}
                   >
@@ -173,7 +184,8 @@ const RecommendationSlide = ({ point, image, modelName, paint }) => {
       <footer className='absolute bottom-10 w-full flex items-center justify-center z-20'>
         <img width={"40px"} height={"40px"} src={arrow} alt='flecha' />
       </footer>
-    </div>
+    </motion.div>
+      </AnimatePresence>
   );
 };
 

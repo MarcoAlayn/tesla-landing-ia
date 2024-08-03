@@ -7,15 +7,14 @@ import RecommendationSection from "../../components/RecommendationSection/Recomm
 import StartSection from "../../components/StartSection/StartSection";
 import image from "../../assets/images/Model-choose.png";
 import desktopVideo from "../../assets/videos/Help_Me_Choose_Landing_Desktop.webm";
-import Showroom from "../../assets/images/Showroom.jpg";
 import Alert from "../../components/alert/Alert";
 import Loader from "../../components/loader/Loader";
 import ShieldBackground from "../../assets/images/Tesla_Shield.jpg";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Choose = () => {
   const [displayInputView, setDisplayInputView] = useState(false);
   const [text, setText] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
   const [displayRecommendationView, setDisplayRecommendationView] =
     useState(false);
 
@@ -52,72 +51,81 @@ const Choose = () => {
 
   const handlerSendCustomerNeeds = async (e) => {
     e.preventDefault();
-    // setIsLoading(true);
     await dispatch(getRecommendedModel(text));
   };
 
   const handlerSuggestProfile = async (e) => {
     e.preventDefault();
-    // setIsLoading(true);
     await dispatch(getSuggestionProfile(e.target.value));
   };
 
   useEffect(() => {
     if (suggestedProfile) {
       setText(suggestedProfile);
-      // setIsLoading(false);
     }
     console.count("suggestedProfile");
   }, [suggestedProfile]);
 
   useEffect(() => {
     if (Object.keys(recommendedModel).length !== 0) {
-      // setIsLoading(false);
       setText("");
       setDisplayRecommendationView(true);
     }
     console.count("recommendedModel");
   }, [recommendedModel]);
 
-  // useEffect(() => {
-  //   console.count("error useEffect");
-  // }, [error]);
-
   return (
-    <div className='font-sans'>
-      <Header />
-      <Alert message={error} />
-      <div className='snap-y snap-mandatory relative w-full h-screen overflow-x-hidden scroll-smooth text-white'>
-        {loading && (
-          <div className='absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50'>
-            <Loader />
-          </div>
-        )}
-        {displayInputView ? (
-          displayRecommendationView ? (
-            <RecommendationSection
-              image={image}
-              recommendedModel={recommendedModel}
-            />
+    <section>
+      <div className='font-sans'>
+        <Header />
+        <Alert message={error} />
+        <div className='snap-y snap-mandatory relative w-full h-screen overflow-x-hidden scroll-smooth text-white'>
+          {loading && (
+            <div
+              className='absolute inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Loader />
+            </div>
+          )}
+          {displayInputView ? (
+            displayRecommendationView ? (
+              <RecommendationSection
+                image={image}
+                recommendedModel={recommendedModel}
+              />
+            ) : (
+              <InputSection
+                text={text}
+                isLoading={loading}
+                handleInputChange={handleInputChange}
+                handlerSendCustomerNeeds={handlerSendCustomerNeeds}
+                handlerSuggestProfile={handlerSuggestProfile}
+                textareaRef={textareaRef}
+                background={ShieldBackground}
+              />
+            )
           ) : (
-            <InputSection
-              text={text}
-              isLoading={loading}
-              handleInputChange={handleInputChange}
-              handlerSendCustomerNeeds={handlerSendCustomerNeeds}
-              handlerSuggestProfile={handlerSuggestProfile}
-              textareaRef={textareaRef}
-              background={ShieldBackground}
-            />
-          )
-        ) : (
-          <StartSection
-            handlerDisplayInputView={handlerDisplayInputView}
-            desktopVideo={desktopVideo}
-          />
-        )}
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <StartSection
+                  handlerDisplayInputView={handlerDisplayInputView}
+                  desktopVideo={desktopVideo}
+                />
+              </motion.div>
+            </AnimatePresence>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
