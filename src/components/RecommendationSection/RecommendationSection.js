@@ -7,7 +7,7 @@ const RecommendationSection = ({ image, recommendedModel }) => {
   console.log(recommendedModel);
 
   return (
-    <section className='snap-y snap-mandatory relative w-full h-screen overflow-auto font-sans'>
+    <section className='snap-y snap-mandatory relative w-full h-screen overflow-auto font-sans scroll-smooth'>
       <RecommendationSlide
         image={photoList[recommendedModel?.model]?.[recommendedModel?.paint]?.first}
         point={recommendedModel?.key_points?.[0]}
