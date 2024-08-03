@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // 2. Importamos las acciones
-import { getAllPokemons, getAllModels } from "../../redux/actions";
+import { getAllModels } from "../../redux/actions";
 import Header from "../../components/header/Header";
 import ModelHero from "../../components/modelHero/ModelHero";
 import ImageMs from "../../assets/images/Homepage-Model-S-Desktop-v2.avif";
@@ -16,14 +16,11 @@ import HomeHero from "../../components/homeHero/HomeHero";
 const Home = () => {
   // 3. Creamos las constantes para usar los hooks
   const dispatch = useDispatch();
-  const pokemons = useSelector((state) => state.pokemons);
   const tesla = useSelector((state) => state.allTeslaModels);
   console.log(tesla);
 
   // 4. Creamos la función para llamar a la acción
-  const getPokemons = () => {
-    dispatch(getAllPokemons());
-  };
+
 
   const getAllTeslaModels = () => {
     dispatch(getAllModels());
@@ -32,39 +29,39 @@ const Home = () => {
   // utilizando el hook useEffect pintamos
   useEffect(() => {
     //getAllTeslaModels();
-    //getPokemons();
+    
   }, []);
 
   return (
-    <div className="font-sans ">
+    <div className='font-sans '>
       <Header />
 
-      <div className="snap-y snap-mandatory relative w-full h-screen overflow-x-hidden scroll-smooth">
-        <div className="snap-start">
+      <div className='snap-y snap-mandatory relative w-full h-screen overflow-x-hidden scroll-smooth'>
+        <div className='snap-start'>
           <HomeHero />
         </div>
-        <div className="snap-start">
+        <div className='snap-start'>
           <ModelHero
             modelName={"Model S"}
             isTextWhite={true}
             sourceElement={ImageMs}
           />
         </div>
-        <div className="snap-start">
+        <div className='snap-start'>
           <ModelHero
             modelName={"Model 3"}
             isTextWhite={false}
             sourceElement={ImageM3}
           />
         </div>
-        <div className="snap-start">
+        <div className='snap-start'>
           <ModelHero
             modelName={"Model X"}
             isTextWhite={false}
             sourceElement={ImageMx}
           />
         </div>
-        <div className="snap-start">
+        <div className='snap-start'>
           <ModelHero
             modelName={"Model Y"}
             isTextWhite={false}
