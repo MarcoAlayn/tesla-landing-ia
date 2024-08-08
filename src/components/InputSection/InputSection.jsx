@@ -116,7 +116,7 @@ const InputSection = ({
           </div>
           <div className='absolute top-0 left-0 w-full h-screen -z-10 bg-black'>
             <ElementBackground
-              alt='background-image'
+              alt='background'
               sourceElement={background}
             />
           </div>

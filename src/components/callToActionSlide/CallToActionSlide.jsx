@@ -79,7 +79,7 @@ const CallToActionSlide = ({ point, image }) => {
               <img
                 className='rounded-2xl'
                 src={image}
-                alt='model image'
+                alt='model'
                 style={{ boxShadow: "rgb(0 0 0 / 9%) 0px 12px 8px 0px" }}
               />
             </div>
