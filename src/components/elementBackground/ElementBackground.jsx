@@ -2,10 +2,10 @@ import React from "react";
 
 const ElementBackground = ({ isVideo, sourceElement, modelName }) => {
   return (
-    <div>
+    <div className='absolute inset-0'>
       {isVideo ? (
         <video
-          className="h-full w-full object-cover object-center"
+          className='h-full w-full object-cover'
           autoPlay
           muted
           loop
@@ -16,7 +16,7 @@ const ElementBackground = ({ isVideo, sourceElement, modelName }) => {
         <img
           src={sourceElement}
           alt={modelName}
-          className="h-screen w-full object-cover object-center"
+          className='h-full w-full object-cover'
         />
       )}
     </div>

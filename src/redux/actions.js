@@ -1,9 +1,11 @@
+import { type } from "@testing-library/user-event/dist/type";
 import axios from "axios";
 
 // 1. Definimos los tipos de acciones
 export const GET_ALL_MODELS = "GET_ALL_MODELS";
 export const GET_RECOMMENDED_MODEL = "GET_RECOMMENDED_MODEL";
 export const GET_SUGGESTION_PROFILE = "GET_SUGGESTION_PROFILE";
+export const RESET_RECOMMENDED_MODEL = "RESET_RECOMMENDED_MODEL";
 
 export const SET_LOADING = "SET_LOADING";
 export const CLEAR_LOADING = "CLEAR_LOADING";
@@ -32,11 +34,13 @@ export const getAllModels = () => {
     dispatch(setLoading());
     dispatch(clearError());
     try {
-      const response = await axios.get("https://localhost:7172/api/Car");
+      const response = await axios.get(
+        "https://dotnetapiteslax.azurewebsites.net/ModelSpecifications"
+      );
       console.log(response.data);
       return dispatch({
         type: GET_ALL_MODELS,
-        payload: response.data, // asegúrate de acceder a response.data
+        payload: response.data,
       });
     } catch (error) {
       console.error("Error:", error);
@@ -106,5 +110,13 @@ export const getSuggestionProfile = (profile) => {
     } finally {
       dispatch(clearLoading());
     }
+  };
+};
+
+export const resetRecommendedModel = () => {
+  return (dispatch) => {
+    return dispatch({
+      type: RESET_RECOMMENDED_MODEL,
+    });
   };
 };

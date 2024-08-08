@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import arrow from "../../assets/images/flecha abajo.gif";
 import HornIcon from "../../assets/images/bocina.png";
 import PlayIcon from "../../assets/images/Music_Player_Buttons/play.png";
 import PauseIcon from "../../assets/images/Music_Player_Buttons/pause.png";
@@ -8,7 +7,7 @@ import StopIcon from "../../assets/images/Music_Player_Buttons/stop.png";
 import RecommendationBackground from "../../assets/images/dark_background.png";
 import IaIcon from "../../assets/images/ia_icon.png";
 import Alert from "../alert/Alert";
-import Loader from "../../components/loader/Loader";
+import Loader from "../loader/Loader";
 
 const CallToActionSlide = ({ point, image }) => {
   console.log(point);
@@ -17,8 +16,8 @@ const CallToActionSlide = ({ point, image }) => {
   const [audio, SetAudio] = useState(null);
 
   const handleButtonClick = async () => {
-    const text = `${point?.title} ${point?.description} ${point?.CTA}`
-     
+    const text = `${point?.title} ${point?.description} ${point?.CTA}`;
+
     setLoading(true);
     setError(null);
 
@@ -64,67 +63,51 @@ const CallToActionSlide = ({ point, image }) => {
   };
 
   return (
-    <div
-      className={`snap-start flex items-center justify-center w-full h-screen flex-col relative bg-white/15`}
-    >
+    <div className='snap-start flex flex-col items-center justify-center w-full h-screen relative bg-white/15'>
       <Alert message={error} />
-      <div className='absolute inset-0 flex items-center justify-center flex-col h-full'>
-        <div className='flex items-center justify-center flex-col bg-gray h-full w-full'>
-          <div className='mb-5'>
-            <img width={"60px"} height={"600px"} src={IaIcon} alt='ia icon' />
+      <div className='absolute inset-0 flex flex-col items-center justify-center h-full'>
+        <div className='flex flex-col items-center justify-center bg-gray w-full h-full'>
+          <div className='mb-5 block lg:hidden 2xl:block'>
+            <img
+              className='w-16 h-auto hidden lg:block'
+              src={IaIcon}
+              alt='ia icon'
+            />
           </div>
-          <div className='flex justify-start items-start w-3/5 gap-x-10 flex-row-reverse'>
-            <div className='w-3/6'>
+          <div className='flex flex-col lg:flex-row lg:gap-x-10 w-full lg:w-3/5 justify-center items-center'>
+            <div className='w-5/6 sm:6/6 lg:w-1/2 '>
               <img
                 className='rounded-2xl'
                 src={image}
                 alt='model image'
-                style={{ boxShadow: "rgba(0, 0, 0, 0.05) 0px 17px 4px 7px" }}
+                style={{ boxShadow: "rgb(0 0 0 / 9%) 0px 12px 8px 0px" }}
               />
             </div>
-            <div className='w-3/6 text-left h-full'>
+            <div className='w-full lg:w-1/2 text-left h-full px-10 sm:px-16 lg:px-0'>
               <ul>
-                <li className=''>
-                  <h3 className=' text-3xl'>
+                <li>
+                  <h3 className='text-xl'>
                     <strong>{point?.title}</strong>
                   </h3>
-                  <br />
-                  <span>{point?.description}</span>
-                  <br />
-                  <br />
-                  <span>{point?.CTA}</span>
-                  <br />
-                  <br />
-                  <span className='italic'>{point?.emotional_connection}</span>
+                  <p className='my-2'>{point?.description}</p>
+                  <p className='my-2'>{point?.CTA}</p>
+                  <p className='italic my-2'>{point?.emotional_connection}</p>
                 </li>
-                {/* Botón que ejecutará la conversión de texto a voz */}
-                {/* si ya hay un audio que s muestre el reproductor */}
                 {audio ? (
-                  <div>
+                  <div className='flex gap-4'>
                     <button className='hover:opacity-50' onClick={handlePlay}>
-                      <img
-                        width={"35px"}
-                        height={"35px"}
-                        src={PlayIcon}
-                        alt='Play Icon'
-                      />
+                      <img className='w-8 h-8' src={PlayIcon} alt='Play Icon' />
                       {loading && <span>Loading...</span>}
                     </button>
                     <button className='hover:opacity-50' onClick={handlePause}>
                       <img
-                        width={"35px"}
-                        height={"35px"}
+                        className='w-8 h-8'
                         src={PauseIcon}
                         alt='Pause Icon'
                       />
                     </button>
                     <button className='hover:opacity-50' onClick={handleStop}>
-                      <img
-                        width={"35px"}
-                        height={"35px"}
-                        src={StopIcon}
-                        alt='Stop Icon'
-                      />
+                      <img className='w-8 h-8' src={StopIcon} alt='Stop Icon' />
                     </button>
                   </div>
                 ) : loading ? (
@@ -135,12 +118,7 @@ const CallToActionSlide = ({ point, image }) => {
                     onClick={handleButtonClick}
                     disabled={loading}
                   >
-                    <img
-                      width={"35px"}
-                      height={"35px"}
-                      src={HornIcon}
-                      alt='Horn Icon'
-                    />
+                    <img className='w-8 h-8' src={HornIcon} alt='Horn Icon' />
                   </button>
                 )}
               </ul>
@@ -148,17 +126,17 @@ const CallToActionSlide = ({ point, image }) => {
           </div>
         </div>
       </div>
-      <div className='absolute top-0 bottom-0  w-full h-full -z-10'>
+      <div className='absolute inset-0 -z-10'>
         <img
           className='object-center object-cover w-full h-full'
           src={RecommendationBackground}
-          alt='tst'
+          alt='Background'
         />
       </div>
       <footer className='absolute bottom-10 w-full flex items-center justify-center z-20'>
         <a
           href=''
-          className='text-white border-2 border-white bg-white/5 backdrop-blur-sm text-sm rounded font-medium px-12 py-2 inline-block 
+          className='text-white border-2 border-white bg-white/5 backdrop-blur-sm text-sm rounded font-medium px-4 py-2 inline-block 
                 hover:bg-white hover:text-black transition-colors ease-out duration-300'
         >
           Agendar prueba de manejo

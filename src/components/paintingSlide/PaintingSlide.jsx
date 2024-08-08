@@ -65,21 +65,18 @@ function PaintingSide({ imagesList, exteriorColors, interiorColors }) {
       className='landing-section h-screen w-screen relative bg-white'
       data-header-color='black'
     >
-      <div className='relative h-full flex flex-col md:flex-row'>
+      <div className='relative h-full flex flex-col justify-center items-center lg:flex-row'>
         {/* Imagen */}
-        <div className='relative flex flex-col items-center justify-center md:h-full md:w-3/4 '>
+        <div className='relative flex flex-col items-center justify-center h-full w-full'>
           <button
-            className='absolute top-1/2 transform -translate-y-1/2 left-4 rounded-md w-8 h-8 md:w-12 md:h-12 text-2xl 
+            className='absolute top-1/2 transform -translate-y-1/2 left-4 rounded-md w-8 h-8 md:w-12 md:h-12 text-2xl z-30
             bg-gray-400 text-white hover:bg-gray-400/50 transition-colors ease-out duration-500 disabled:pointer-events-none disabled:bg-gray-200'
             onClick={handlePreviousNumber}
             disabled={currentImageNumber <= minImageNumber}
           >
             {"<"}
           </button>
-          <div
-            className='relative flex items-center justify-center w-full h-full'
-            style={{ maxWidth: "90%", maxHeight: "90%" }}
-          >
+          <div className='relative flex items-center justify-center w-full h-full'>
             <AnimatePresence>
               <motion.img
                 key={imagesList[currentColor][currentView][currentImageNumber]}
@@ -104,15 +101,20 @@ function PaintingSide({ imagesList, exteriorColors, interiorColors }) {
         </div>
 
         {/* Selectores */}
-        <div className='w-full md:w-1/4 h-full flex flex-col justify-center items-center gap-y-6'>
+        <div className='w-full md:w-1/2 h-full flex flex-col justify-center items-center gap-y-6 p-4 md:p-0'>
           {/* Selector de pintura */}
-          <div className='flex flex-col gap-y-6'>
+          <div className='flex flex-col gap-y-6 items-center'>
             <span className='text-xl md:text-2xl font-semibold'>Pintura</span>
             <div className='flex gap-x-4'>
               {exteriorColors.map((option, index) => (
                 <button
                   key={index}
                   onClick={() => handleExteriorColor(option.name)}
+                  className={`focus:outline-none ${
+                    currentColor === option.name
+                      ? "border-4 border-blue-500 rounded-full"
+                      : ""
+                  }`}
                 >
                   <img
                     src={exteriorIcons[option.name]}
@@ -122,7 +124,7 @@ function PaintingSide({ imagesList, exteriorColors, interiorColors }) {
                 </button>
               ))}
             </div>
-            <span className='text-sm md:text-base'>
+            <span className='text-sm md:text-base text-center'>
               {
                 exteriorColors.find((option) => option.name === currentColor)
                   .label
@@ -131,31 +133,34 @@ function PaintingSide({ imagesList, exteriorColors, interiorColors }) {
           </div>
 
           {/* Selector de interior */}
-          <div className='flex flex-col gap-y-6'>
+          <div className='flex flex-col gap-y-6 items-center'>
             <span className='text-xl md:text-2xl font-semibold'>Interior</span>
-            <div className='flex flex-col gap-y-6 justify-center items-center'>
-              <div className='flex gap-x-4'>
-                {interiorColors.map((option, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleInteriorColor(index, option.name)}
-                  >
-                    <img
-                      src={interiorIcons[option.name]}
-                      alt={option.label}
-                      className='w-8 h-8 md:w-12 md:h-12'
-                    />
-                  </button>
-                ))}
-              </div>
-              <span className='text-sm md:text-base'>
-                {
-                  interiorColors.find(
-                    (option) => option.name === currentColorInterior
-                  ).label
-                }
-              </span>
+            <div className='flex gap-x-4'>
+              {interiorColors.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleInteriorColor(index, option.name)}
+                  className={`focus:outline-none ${
+                    currentColorInterior === option.name
+                      ? "border-4 border-blue-500 rounded-full"
+                      : ""
+                  }`}
+                >
+                  <img
+                    src={interiorIcons[option.name]}
+                    alt={option.label}
+                    className='w-8 h-8 md:w-12 md:h-12'
+                  />
+                </button>
+              ))}
             </div>
+            <span className='text-sm md:text-base text-center'>
+              {
+                interiorColors.find(
+                  (option) => option.name === currentColorInterior
+                ).label
+              }
+            </span>
           </div>
         </div>
       </div>

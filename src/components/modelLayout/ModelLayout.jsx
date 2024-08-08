@@ -16,6 +16,7 @@ const ModelLayout = ({
   imagesList,
   exteriorColors,
   interiorColors,
+  modelSpecifications,
 }) => {
   return (
     <div className='font-sans'>
@@ -34,6 +35,7 @@ const ModelLayout = ({
               modelName={modelName}
               sourceElement={sourceElement}
               isVideo={isVideo}
+              modelSpecifications={modelSpecifications}
             />
             <div className='absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black to-transparent pointer-events-none'></div>
           </motion.div>
@@ -44,7 +46,10 @@ const ModelLayout = ({
           <div className='absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black to-transparent pointer-events-none'></div>
         </div>
         <div className='h-screen w-screen text-center relative overflow-hidden snap-start'>
-          <SpecificationSlide {...specificationSlideProps} />
+          <SpecificationSlide
+            {...specificationSlideProps}
+            modelSpecifications={modelSpecifications}
+          />
           <div className='absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black to-transparent pointer-events-none'></div>
         </div>
         <div className='h-screen w-screen text-center relative overflow-hidden snap-start'>

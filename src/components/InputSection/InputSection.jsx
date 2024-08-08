@@ -14,7 +14,7 @@ const InputSection = ({
   return (
     <section
       id='landing-profile'
-      className=' h-screen w-screen text-center relative overflow-hidden flex flex-col flex-grow justify-end pb-10 '
+      className='font-sans h-screen w-screen text-center relative overflow-hidden flex flex-col flex-grow justify-end pb-10 '
     >
       <AnimatePresence>
         <motion.div
@@ -33,7 +33,7 @@ const InputSection = ({
                   }}
                   className='mx-auto flex flex-col flex-1 gap-4 text-base md:gap-5 lg:gap-7 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[60rem] bg-[#1e1f1f] rounded-3xl py-7 px-10'
                 >
-                  <div className='flex [&>button]:rounded-md  mx-auto gap-x-5 [&>button]:p-2 [&>button]:border-white [&>button]:border w-full justify-evenly'>
+                  <div className='flex [&>button]:rounded-md  mx-auto gap-x-5 gap-y-3 [&>button]:p-2 [&>button]:border-white [&>button]:border w-full justify-evenly flex-col sm:flex-row '>
                     <button
                       id='btn'
                       className='text-white border-2 border-white bg-white/5 backdrop-blur-sm text-sm rounded font-medium px-12 py-2 inline-block 
@@ -81,7 +81,8 @@ const InputSection = ({
                                 onChange={handleInputChange}
                                 rows='1'
                                 placeholder='Proporciona tus gustos, preferencias y necesidades'
-                                className='m-0 resize-none border-0 bg-transparent px-0 focus:ring-0 focus:outline-none focus:border-transparent max-h-96 overflow-hidden'
+                                className='m-0 resize-none border-0 bg-transparent px-0 focus:ring-0 focus:outline-none focus:border-transparent max-h-96 overflow-y-auto'
+                                maxLength='1200'
                               ></textarea>
                             </div>
 

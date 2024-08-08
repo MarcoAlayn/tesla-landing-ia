@@ -11,6 +11,7 @@ const ModelPage = ({
   imagesList,
   exteriorColors,
   interiorColors,
+  modelSpecifications
 }) => {
   return (
     <ModelLayout
@@ -23,6 +24,7 @@ const ModelPage = ({
       imagesList={imagesList}
       exteriorColors={exteriorColors}
       interiorColors={interiorColors}
+      modelSpecifications={modelSpecifications}
     />
   );
 };

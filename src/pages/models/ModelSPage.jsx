@@ -57,6 +57,7 @@ import fourthLS from "../../assets/images/model_s_paintings/Lunar Silver/04.jfif
 import blackLS from "../../assets/images/model_s_paintings/Lunar Silver/interiors/black.jfif";
 import whiteLS from "../../assets/images/model_s_paintings/Lunar Silver/interiors/white.jfif";
 import creamLS from "../../assets/images/model_s_paintings/Lunar Silver/interiors/cream.jfif";
+import { useSelector } from "react-redux";
 
 const ModelSPage = () => {
   const modelName = "Model S";
@@ -120,6 +121,9 @@ const ModelSPage = () => {
     { name: "cream", label: "Crema" },
   ];
 
+  const modelSpecifications = useSelector((state) => state.modelSpecifications);
+  console.log(modelSpecifications)
+
   return (
     <ModelPage
       modelName={modelName}
@@ -131,6 +135,7 @@ const ModelSPage = () => {
       imagesList={imagesList}
       exteriorColors={exteriorColors}
       interiorColors={interiorColors}
+      modelSpecifications={modelSpecifications[0]}
     />
   );
 };
