@@ -14,12 +14,12 @@ const StartSection = () => {
                 <h2 className='text-white pt-40 text-5xl font-medium'>
                   Ayúdame a elegir
                 </h2>
-                <p className='text-white text-sm pt-5'>
+                <p className='text-white lg:text-lg text-sm pt-3'>
                   Proporciona tus gustos, preferencias y necesidades para
                   recibir una recomendación personalizada del modelo de Tesla
-                  ideal para ti
+                  ideal para ti.
                 </p>
-                <p className='text-white text-sm'>
+                <p className='text-white lg:text-lg text-sm pt-3'>
                   Nuestra IA analizará tus necesidades y te dirá por qué es tu
                   modelo ideal.
                 </p>

@@ -18,7 +18,7 @@ const ImageSlide = ({ modelName, modelImage, isTextWhite = true }) => {
           <p
             className={`${
               isTextWhite ? "text-white" : "text-black"
-            } text-sm pt-4 `}
+            } text-lg mt-3`}
           >
             Concertar una prueba de conducción
           </p>

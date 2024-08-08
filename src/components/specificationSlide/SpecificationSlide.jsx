@@ -9,7 +9,7 @@ const SpecificationSlide = ({
   console.log(modelSpecifications);
   return (
     <section
-      className='landing-section bg-black h-screen w-screen relative overflow-hidden'
+      className='landing-section bg-black h-screen w-screen relative overflow-hidden font-sans'
       data-header-color={`${isTextWhite ? "white" : "black"}`}
     >
       <div className='z-30 relative h-full flex flex-col lg:flex-row'>

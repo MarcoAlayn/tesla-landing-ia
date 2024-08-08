@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import { getAllModels } from "../../redux/actions";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import Header from "../../components/header/Header";
 import ModelHero from "../../components/modelHero/ModelHero";
 import ImageMs from "../../assets/images/Homepage-Model-S-Desktop-v2.avif";
@@ -8,32 +7,15 @@ import ImageM3 from "../../assets/images/New-Model-3-Performance-Main-Hero-Deskt
 import ImageMx from "../../assets/images/Model-X-Main-Hero-Desktop.avif";
 import ImageMy from "../../assets/images/New-Model-Y-Main-Hero-Desktop-LHD.avif";
 import Alert from "../../components/alert/Alert";
-
 import HomeHero from "../../components/homeHero/HomeHero";
 
 const Home = () => {
   const error = useSelector((state) => state.error);
-
-  const dispatch = useDispatch();
-
   const modelSpecifications = useSelector(
     (state) => state?.modelSpecifications
   );
-
-  const getAllTeslaModels = async (e) => {
-    await dispatch(getAllModels());
-    console.log("se ejecuta");
-  };
-  console.log(modelSpecifications);
-
-  useEffect(() => {
-    console.log(modelSpecifications.length !== 0);
-    if (modelSpecifications.length !== 0) return;
-    getAllTeslaModels();
-  }, [dispatch]);
-
   return (
-    <div className='font-sans '>
+    <div className='font-sans'>
       <Header />
       <Alert message={error} />
       <div className='snap-y snap-mandatory relative w-full h-screen overflow-x-hidden scroll-smooth'>

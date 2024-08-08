@@ -10,7 +10,7 @@ const ModelHero = ({
 }) => {
   return (
     <section
-      className='landing-section bg-black h-screen w-screen text-center relative overflow-hidden'
+      className='landing-section bg-black h-screen w-screen text-center relative overflow-hidden font-sans'
       data-header-color={`${isTextWhite ? "white" : "black"}`}
     >
       <div className='z-30 relative h-full flex flex-col'>
@@ -25,7 +25,7 @@ const ModelHero = ({
           <p
             className={`${
               isTextWhite ? "text-white" : "text-black"
-            } text-sm pt-4`}
+            } text-lg mt-3`}
           >
             Concertar una prueba de conducción
           </p>
