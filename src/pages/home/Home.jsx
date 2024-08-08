@@ -1,41 +1,23 @@
-import React, { useEffect } from "react";
-// 1. Importamos los hooks de react-redux
-import { useSelector, useDispatch } from "react-redux";
-
-// 2. Importamos las acciones
-import { getAllModels } from "../../redux/actions";
+import React from "react";
+import { useSelector } from "react-redux";
 import Header from "../../components/header/Header";
 import ModelHero from "../../components/modelHero/ModelHero";
 import ImageMs from "../../assets/images/Homepage-Model-S-Desktop-v2.avif";
 import ImageM3 from "../../assets/images/New-Model-3-Performance-Main-Hero-Desktop-LHD.avif";
 import ImageMx from "../../assets/images/Model-X-Main-Hero-Desktop.avif";
 import ImageMy from "../../assets/images/New-Model-Y-Main-Hero-Desktop-LHD.avif";
-
+import Alert from "../../components/alert/Alert";
 import HomeHero from "../../components/homeHero/HomeHero";
 
 const Home = () => {
-  // 3. Creamos las constantes para usar los hooks
-  const dispatch = useDispatch();
-  const tesla = useSelector((state) => state.allTeslaModels);
-  console.log(tesla);
-
-  // 4. Creamos la función para llamar a la acción
-
-
-  const getAllTeslaModels = () => {
-    dispatch(getAllModels());
-  };
-
-  // utilizando el hook useEffect pintamos
-  useEffect(() => {
-    //getAllTeslaModels();
-    
-  }, []);
-
+  const error = useSelector((state) => state.error);
+  const modelSpecifications = useSelector(
+    (state) => state?.modelSpecifications
+  );
   return (
-    <div className='font-sans '>
+    <div className='font-sans'>
       <Header />
-
+      <Alert message={error} />
       <div className='snap-y snap-mandatory relative w-full h-screen overflow-x-hidden scroll-smooth'>
         <div className='snap-start'>
           <HomeHero />
@@ -45,6 +27,7 @@ const Home = () => {
             modelName={"Model S"}
             isTextWhite={true}
             sourceElement={ImageMs}
+            modelSpecifications={modelSpecifications[0]}
           />
         </div>
         <div className='snap-start'>
@@ -52,6 +35,7 @@ const Home = () => {
             modelName={"Model 3"}
             isTextWhite={false}
             sourceElement={ImageM3}
+            modelSpecifications={modelSpecifications[1]}
           />
         </div>
         <div className='snap-start'>
@@ -59,6 +43,7 @@ const Home = () => {
             modelName={"Model X"}
             isTextWhite={false}
             sourceElement={ImageMx}
+            modelSpecifications={modelSpecifications[2]}
           />
         </div>
         <div className='snap-start'>
@@ -66,6 +51,7 @@ const Home = () => {
             modelName={"Model Y"}
             isTextWhite={false}
             sourceElement={ImageMy}
+            modelSpecifications={modelSpecifications[3]}
           />
         </div>
       </div>

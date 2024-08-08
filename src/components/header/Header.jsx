@@ -1,7 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Logo from "../../assets/images/Logo";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { resetRecommendedModel } from "../../redux/actions";
 
 const Header = () => {
+  const recommendedModel = useSelector((state) => state.recommendedModel);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const header = document.querySelector("#landing-header");
 
@@ -87,11 +93,15 @@ const Header = () => {
     });
   });
 
+  const handlerResetRecommendationModel = () => {
+    dispatch(resetRecommendedModel());
+  };
+
   return (
     <header
       ref={headerRef}
       id='landing-header'
-      className='py-3 px-10 flex items-center fixed top-0 w-full justify-between z-40 text-white'
+      className='font-sans py-3 px-10 flex items-center fixed top-0 w-full justify-between z-40 text-white flex-col sm:flex-row'
     >
       <a href='/' className='flex flex-grow basis-0'>
         <Logo />
@@ -99,38 +109,29 @@ const Header = () => {
       <nav>
         <ul className='flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-300 [&>li>a]:text-current [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2'>
           <li>
-            <a href='/models'>Model S</a>
+            <Link to='/models'>Model S</Link>
           </li>
           <li>
-            <a href='/model3'>Model 3</a>
+            <Link to='/model3'>Model 3</Link>
           </li>
           <li>
-            <a href='/modelx'>Model X</a>
+            <Link to='/modelx'>Model X</Link>
           </li>
           <li>
-            <a href='/modely'>Model Y</a>
+            <Link to='/modely'>Model Y</Link>
           </li>
-          {/* <li>
-            <a href="#">Powerwall</a>
-          </li>
-          <li>
-            <a href="#">Carga</a>
-          </li> */}
         </ul>
       </nav>
       <nav className='flex flex-grow basis-0 justify-end '>
         <ul className='flex text-sm [&>li>a]:transition-colors [&>li>a]:duration-300 [&>li>a]:text-current [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2'>
-          {/* <li>
-            <a href="#">Soporte</a>
-          </li>
           <li>
-            <a href="#">Tienda</a>
-          </li>
-          <li>
-            <a href="#">Cuenta</a>
-          </li> */}
-          <li>
-            <a href='/choose'>Ayúdame a elegir</a>
+            {recommendedModel.length !== 0 ? (
+              <Link onClick={handlerResetRecommendationModel} to='/profile'>
+                Reintentar Recomendación
+              </Link>
+            ) : (
+              <Link to='/choose'>Ayúdame a elegir</Link>
+            )}
           </li>
         </ul>
       </nav>

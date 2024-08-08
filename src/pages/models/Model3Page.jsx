@@ -43,6 +43,7 @@ import thirdUR from "../../assets/images/model_3_paintings/Ultra Red/03.jfif";
 import fourthUR from "../../assets/images/model_3_paintings/Ultra Red/04.jfif";
 import blackUR from "../../assets/images/model_3_paintings/Ultra Red/interiors/black.jfif";
 import whiteUR from "../../assets/images/model_3_paintings/Ultra Red/interiors/white.jfif";
+import { useSelector } from "react-redux";
 
 const Model3Page = () => {
   const modelName = "Model 3";
@@ -100,6 +101,9 @@ const Model3Page = () => {
     { name: "white", label: "Blanco y Negro" },
   ];
 
+  const modelSpecifications = useSelector((state) => state.modelSpecifications);
+  console.log(modelSpecifications[1])
+
   return (
     <ModelPage
       modelName={modelName}
@@ -111,6 +115,7 @@ const Model3Page = () => {
       imagesList={imagesList}
       exteriorColors={exteriorColors}
       interiorColors={interiorColors}
+      modelSpecifications={modelSpecifications[1]}
     />
   );
 };

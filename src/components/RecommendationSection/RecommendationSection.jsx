@@ -3,7 +3,7 @@ import RecommendationSlide from "../recommendationSlide/RecommendationSlide";
 import CallToActionSlide from "../callToActionSlide/CallToActionSlide";
 import { photoList } from "../../utils/photoList";
 
-const RecommendationSection = ({ image, recommendedModel }) => {
+const RecommendationSection = ({ recommendedModel }) => {
   console.log(recommendedModel);
 
   return (

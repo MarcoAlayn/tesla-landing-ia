@@ -6,11 +6,12 @@ import {
   CLEAR_LOADING,
   SET_ERROR,
   CLEAR_ERROR,
+  RESET_RECOMMENDED_MODEL,
 } from "./actions";
 
 const initialState = {
   recommendedModel: [],
-  allTeslaModels: [],
+  modelSpecifications: [],
   suggestedProfile: [],
   loading: false,
   error: null,
@@ -21,7 +22,7 @@ export function rootReducer(state = initialState, action) {
     case GET_ALL_MODELS:
       return {
         ...state,
-        allTeslaModels: action.payload,
+        modelSpecifications: action.payload,
       };
     case GET_RECOMMENDED_MODEL:
       return {
@@ -52,6 +53,11 @@ export function rootReducer(state = initialState, action) {
       return {
         ...state,
         error: null,
+      };
+    case RESET_RECOMMENDED_MODEL:
+      return {
+        ...state,
+        recommendedModel: [],
       };
     default:
       return state;
