@@ -4,21 +4,27 @@ on:
   push:
     branches:
       - develop
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - develop
+  
 
 jobs:
   build_and_deploy_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
+    
     name: Build and Deploy Job
+    
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: true
           lfs: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Deploy Static Web App
         id: deploy
@@ -30,14 +36,4 @@ jobs:
           app_location: "/" # App source code path
           output_location: "build" # Built app content directory - optional
 
-  close_pull_request_job:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    name: Close Pull Request Job
-    steps:
-      - name: Close Pull Request
-        id: closepullrequest
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_ICY_DESERT_08487D11E }}
-          action: "close"
+  
