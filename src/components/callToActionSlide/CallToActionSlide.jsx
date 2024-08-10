@@ -74,7 +74,7 @@ const CallToActionSlide = ({ point, image }) => {
               alt='ia icon'
             />
           </div>
-          <div className='flex flex-col lg:flex-row lg:gap-x-10 w-full lg:w-3/5 justify-center items-center'>
+          <div className='flex flex-col md:flex-row lg:gap-x-10 w-full lg:w-3/5 justify-center items-center lg:flex-row-reverse'>
             <div className='w-5/6 sm:6/6 lg:w-1/2 '>
               <img
                 className='rounded-2xl'
